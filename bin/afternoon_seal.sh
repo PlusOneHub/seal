@@ -1,10 +1,7 @@
 #!/bin/bash
 
 teams=(
-  govuk-infrastructure
-  search-team
-  content-tools
-  servicemanual
+  all-dev
 )
 
 for team in ${teams[*]} ; do
