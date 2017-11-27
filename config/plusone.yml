@@ -1,15 +1,12 @@
-# Please insert new items alphabetically.
-
-all-dev:
+MVP_Litslink:
   members:
     - arun02139
     - michael
-    - Mykhailo Gladkykh
     - prorokus
     - wooloofun
 
   channel:
-    "#github"
+    "#angry-seal-bot-test"
 
   exclude_titles:
     - "[DO NOT MERGE]"
