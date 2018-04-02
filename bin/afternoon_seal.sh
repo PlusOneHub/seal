@@ -1,7 +1,7 @@
 #!/bin/bash
 
 teams=(
-  all-dev
+  PlusOneHub
 )
 
 for team in ${teams[*]} ; do

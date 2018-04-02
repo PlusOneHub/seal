@@ -1,10 +1,21 @@
 PlusOneHub:
   members:
     - arun02139
-    - michael
+    - MaximHordijchuk
+    - sschoellhammer
+    - Prorokus
+    - wowzhoe
+    - wenting-zhao
+    - oniboxblink
+    - haopengy
+    - nadiialitslink
+    - heliosphereman
+    - mariakysliakova
+    - mikhailogic
+    - addisondebolt
 
   channel:
-    "#angry-seal-bot-test"
+    "#pull-requests"
 
   exclude_titles:
     - "[DO NOT MERGE]"
@@ -33,13 +44,3 @@ PlusOneHub:
     - Don't forget the Jabra and fisheye lens if you're dialing in people!
     - If Hangouts is being flaky, try Slack calls or appear.in!
     - I AM VENGEANCE! I AM THE NIGHT! I AM BATMAN! :batsignal:
-
-# servicemanual:
-#   members:
-#
-#   channel:
-#     "#servicemanual"
-#
-#   exclude_titles:
-#     - DO NOT MERGE
-#     - WIP
