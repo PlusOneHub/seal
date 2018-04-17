@@ -13,7 +13,8 @@ This is a Slack bot that publishes a team's pull requests to their Slack Channel
 ### Config
 Fork the repo and add/change the config files that relate to your github organisation. For example, the alphagov config file is located at [config/alphagov.yml](config/alphagov.yml) and the config for scheduled daily visits can be found in [bin](bin)
 
-Include your team's name, the Github names of your team members, and the Slack channel you want to post to.
+Include your team's name, the Github names and slack ids of your team members, and the Slack channel you want to post to.
+To get the slack ids go [here](https://api.slack.com/methods/users.list/test) and click to "Test Method" button. Than find the ids of wanted users.
 
 In your shell profile, put in:
 

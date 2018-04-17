@@ -1,18 +1,17 @@
 PlusOneHub:
   members:
-    - arun02139
-    - MaximHordijchuk
-    - sschoellhammer
-    - Prorokus
-    - wowzhoe
-    - wenting-zhao
-    - oniboxblink
-    - haopengy
-    - nadiialitslink
-    - heliosphereman
-    - mariakysliakova
-    - mikhailogic
-    - addisondebolt
+    arun02139: U2KDQKL5D
+    MaximHordijchuk: U92AW9U4E
+    sschoellhammer: U9P65RDRS
+    Prorokus: U275VJTFX
+    wowzhoe: U7T525XPE
+    oniboxblink: U6V82EC4V
+    haopengy: U499B2Z0C
+    nadiialitslink: U9BHL7799
+    mariakysliakova: U74SHNL85
+    mikhailogic: U7EBTNE1G
+    addisondebolt: U7FKLA1EU
+    heliosphereman: U43BXGHRR
 
   channel:
     "#pull-requests"

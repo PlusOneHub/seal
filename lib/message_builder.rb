@@ -48,21 +48,21 @@ class MessageBuilder
   end
 
   def bark_about_old_pull_requests
-    angry_bark = old_pull_requests.keys.each_with_index.map { |title, n| present(title, n + 1) }
+    angry_bark = old_pull_requests.values.each_with_index.map { |pull_request, n| present(pull_request, n + 1) }
     recent_pull_requests = @content.reject { |_title, pr| rotten?(pr) }
-    list_recent_pull_requests = recent_pull_requests.keys.each_with_index.map { |title, n| present(title, n + 1) }
-    informative_bark = "There are also these pull requests that need to be reviewed today:\n\n#{list_recent_pull_requests.join} " if !recent_pull_requests.empty?
+    list_recent_pull_requests = recent_pull_requests.values.each_with_index.map { |pull_request, n| present(pull_request, n + 1) }
+    informative_bark = "There are also these pull requests that need to be reviewed today:\n\n#{list_recent_pull_requests.join} " unless recent_pull_requests.empty?
     "AAAAAAARGH! #{these(old_pull_requests.length)} #{pr_plural(old_pull_requests.length)} not been updated in over 2 days.\n\n#{angry_bark.join}\nRemember each time you forget to review your pull requests, a baby seal dies.
     \n\n#{informative_bark}"
   end
 
   def list_pull_requests
-    message = @content.keys.each_with_index.map { |title, n| present(title, n + 1) }
-    "Hello team! \n\n Here are the pull requests that need to be reviewed today:\n\n#{message.join}\nMerry reviewing!"
+    message = @content.values.each_with_index.map { |pull_request, n| present(pull_request, n + 1) }
+    "Hello team!\n\n Here are the pull requests that need to be reviewed today:\n\n#{message.join}\nMerry reviewing!"
   end
 
   def no_pull_requests
-    "Aloha team! It's a beautiful day! :happyseal: :happyseal: :happyseal:\n\nNo pull requests to review today! :rainbow: :sunny: :metal: :tada:"
+    "Aloha team! It's a beautiful day!\n\nNo pull requests to review today! :rainbow: :sunny: :the_horns: :tada:"
   end
 
   def bark_about_quotes
@@ -91,14 +91,17 @@ class MessageBuilder
   end
 
   def present(pull_request, index)
-    pr = @content[pull_request]
+    pull_request_title = pull_request['title']
+    pr = @content[pull_request_title]
     days = age_in_days(pr)
     thumbs_up = ''
     thumbs_up = " | #{pr["thumbs_up"].to_i} :+1:" if pr["thumbs_up"].to_i > 0
     approved = pr["approved"] ? " | :white_check_mark: " : ""
+    assignees = pull_request['slack_ids'].map { |slack_id| "<@#{slack_id}>" }.join(' ')
     <<-EOF.gsub(/^\s+/, '')
     #{index}\) *#{pr["repo"]}* | #{pr["author"]} | updated #{days_plural(days)}#{thumbs_up}#{approved}
-    #{labels(pr)} <#{pr["link"]}|#{html_encode(pr["title"])}> - #{pr["comments_count"]}#{comments(pull_request)}
+    #{labels(pr)} <#{pr["link"]}|#{html_encode(pr["title"])}> - #{pr["comments_count"]}#{comments(pull_request_title)}
+    #{assignees} please check
     EOF
   end
 

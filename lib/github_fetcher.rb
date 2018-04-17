@@ -42,6 +42,7 @@ class GithubFetcher
     pr['approved'] = approved?(pull_request, repo_name)
     pr['updated'] = Date.parse(pull_request.updated_at.to_s)
     pr['labels'] = labels(pull_request, repo_name)
+    pr['assignee_logins'] = assignee_logins(pull_request)
     pr
   end
 
@@ -97,5 +98,9 @@ class GithubFetcher
   def excluded_repo?(repo)
     return false unless exclude_repos
     exclude_repos.include?(repo)
+  end
+
+  def assignee_logins(pull_request)
+    pull_request['assignees'].map(&:login)
   end
 end

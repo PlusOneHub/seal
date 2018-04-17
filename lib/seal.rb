@@ -65,22 +65,23 @@ class Seal
       exclude_repos = ENV['GITHUB_EXCLUDE_REPOS'] ? ENV['GITHUB_EXCLUDE_REPOS'].split(',') : nil
       @quotes = ENV['SEAL_QUOTES'] ? ENV['SEAL_QUOTES'].split(',') : nil
     end
-    return fetch_from_github(members, use_labels, exclude_labels, exclude_titles, exclude_repos) if @mode == nil
+    return fetch_from_github(members, use_labels, exclude_labels, exclude_titles, exclude_repos) unless @mode
     @quotes
   end
 
-
   def fetch_from_github(members, use_labels, exclude_labels, exclude_titles, exclude_repos)
-    git = GithubFetcher.new(members,
-                            use_labels,
-                            exclude_labels,
-                            exclude_titles,
-                            exclude_repos
-                           )
-    git.list_pull_requests
+    github_logins = members.keys
+    git = GithubFetcher.new(github_logins, use_labels, exclude_labels, exclude_titles, exclude_repos)
+    extend_with_slack_ids(git.list_pull_requests, members)
   end
 
   def team_config(team)
     org_config[team] if org_config
+  end
+
+  def extend_with_slack_ids(pull_request_list, members)
+    pull_request_list.each do |_title, pull_request|
+      pull_request['slack_ids'] = pull_request['assignee_logins'].map { |login| members[login] }
+    end
   end
 end

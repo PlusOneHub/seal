@@ -95,7 +95,7 @@ describe MessageBuilder do
     let(:pull_requests) { no_pull_requests }
 
     it 'builds seal of approval message' do
-      expect(message_builder.build).to eq("Aloha team! It's a beautiful day! :happyseal: :happyseal: :happyseal:\n\nNo pull requests to review today! :rainbow: :sunny: :metal: :tada:")
+      expect(message_builder.build).to eq("Aloha team! It's a beautiful day!\n\nNo pull requests to review today! :rainbow: :sunny: :the_horns: :tada:")
     end
 
     it 'has an approval poster mood' do
