@@ -101,6 +101,7 @@ DEPENDENCIES
   guard-rspec
   jsonlint
   octokit (~> 4.0)
+  pry
   pry-byebug
   rake
   rspec
@@ -110,7 +111,7 @@ DEPENDENCIES
   timecop
 
 RUBY VERSION
-   ruby 2.2.6p396
+   ruby 2.3.0p0
 
 BUNDLED WITH
-   1.16.0
+   1.16.1
